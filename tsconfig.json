@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "async-storage-plugin": [
+        "dist/async-storage-plugin"
+      ],
+      "async-storage-plugin/*": [
+        "dist/async-storage-plugin/*"
+      ]
+    }
   }
 }

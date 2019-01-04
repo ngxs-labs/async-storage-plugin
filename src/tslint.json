@@ -1,0 +1,17 @@
+{
+  "extends": "../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "async-storage-plugin",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "async-storage-plugin",
+      "kebab-case"
+    ]
+  }
+}
