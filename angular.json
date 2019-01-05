@@ -123,7 +123,7 @@
             "tsConfig": "integration/tsconfig.spec.json",
             "karmaConfig": "integration/karma.conf.js",
             "styles": [
-              "integration/global.css"
+              "integration/global.scss"
             ],
             "scripts": [],
             "assets": [
