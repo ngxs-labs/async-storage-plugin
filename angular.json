@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "defaultProject": "async-storage-plugin",
   "newProjectRoot": "projects",
   "projects": {
     "async-storage-plugin": {
@@ -39,26 +40,34 @@
       }
     },
     "integration": {
-      "root": "integration",
-      "sourceRoot": ".",
+      "root": "",
+      "sourceRoot": "integration",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "integration",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/integration",
-            "index": "integration/src/index.html",
-            "main": "integration/src/main.ts",
-            "polyfills": "integration/src/polyfills.ts",
+            "index": "integration/index.html",
+            "main": "integration/main.ts",
+            "polyfills": "integration/polyfills.ts",
             "tsConfig": "integration/tsconfig.app.json",
             "assets": [
-              "integration/src/favicon.ico",
-              "integration/src/assets"
+              {
+                "glob": "**/*",
+                "input": "integration/assets",
+                "output": "assets"
+              }
             ],
             "styles": [
-              "integration/src/styles.css"
+              {
+                "input": "integration/theme/variables.scss"
+              },
+              {
+                "input": "integration/global.scss"
+              }
             ],
             "scripts": []
           },
@@ -66,8 +75,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "integration/src/environments/environment.ts",
-                  "with": "integration/src/environments/environment.prod.ts"
+                  "replace": "integration/environments/environment.ts",
+                  "with": "integration/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -109,17 +118,25 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "integration/src/test.ts",
-            "polyfills": "integration/src/polyfills.ts",
+            "main": "integration/test.ts",
+            "polyfills": "integration/polyfills.ts",
             "tsConfig": "integration/tsconfig.spec.json",
             "karmaConfig": "integration/karma.conf.js",
             "styles": [
-              "integration/src/styles.css"
+              "integration/global.css"
             ],
             "scripts": [],
             "assets": [
-              "integration/src/favicon.ico",
-              "integration/src/assets"
+              {
+                "glob": "favicon.ico",
+                "input": "integration/",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "integration/assets",
+                "output": "/assets"
+              }
             ]
           }
         },
@@ -134,9 +151,43 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app:build:production"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "app:ionic-cordova-build",
+            "devServerTarget": "app:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:production",
+              "devServerTarget": "app:serve:production"
+            }
+          }
         }
       }
     }
   },
-  "defaultProject": "async-storage-plugin"
+  "cli": {
+    "defaultCollection": "@ionic/angular-toolkit"
+  },
+  "schematics": {
+    "@ionic/angular-toolkit:component": {
+      "styleext": "scss"
+    },
+    "@ionic/angular-toolkit:page": {
+      "styleext": "scss"
+    }
+  }
 }

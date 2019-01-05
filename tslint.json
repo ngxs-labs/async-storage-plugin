@@ -1,6 +1,6 @@
 {
   "rulesDirectory": [
-    "codelyzer"
+    "node_modules/codelyzer"
   ],
   "rules": {
     "arrow-return-shorthand": true,
@@ -16,10 +16,6 @@
     },
     "eofline": true,
     "forin": true,
-    "import-blacklist": [
-      true,
-      "rxjs/Rx"
-    ],
     "import-spacing": true,
     "indent": [
       true,
@@ -64,8 +60,7 @@
       "ignore-params"
     ],
     "no-misused-new": true,
-    "no-non-null-assertion": false,
-    "no-redundant-jsdoc": true,
+    "no-non-null-assertion": true,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
@@ -117,6 +112,19 @@
       "check-separator",
       "check-type"
     ],
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "app",
+      "page",
+      "kebab-case"
+    ],
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
@@ -125,7 +133,6 @@
     "no-output-rename": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
     "directive-class-suffix": true
   }
 }

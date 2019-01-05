@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { CounterState, Increment, Decrement } from './store/counter.state';
 import { Select, Store } from '@ngxs/store';
+import { CounterState, Increment, Decrement } from '../store/counter.state';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
-export class AppComponent {
-  title = 'integration';
+export class HomePage {
 
   @Select(CounterState)
   public counter$: Observable<number>;
