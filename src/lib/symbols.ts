@@ -1,4 +1,5 @@
 import { InjectionToken } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 export const enum StorageOption {
     LocalStorage,
@@ -65,4 +66,44 @@ export interface StorageEngine {
     removeItem(key: string): void;
     clear(): void;
     key(val: number): string;
+}
+
+export interface AsyncStorageEngine {
+    length(): Observable<number>;
+    getItem(key): Observable<any>;
+    setItem(key, val): void;
+    removeItem(key): void;
+    clear(): void;
+    key(val: number): Observable<string>;
+}
+
+/**
+ * @Description Proxy used around synchronous storage engines to provide the same internal API than async engines
+ */
+export class AsyncStorageEngineProxy implements AsyncStorageEngine {
+    constructor(private _storage: StorageEngine) { }
+
+    public length(): Observable<number> {
+        return of(this._storage.length);
+    }
+
+    public getItem<T = any>(key): Observable<T> {
+        return of(this._storage.getItem(key));
+    }
+
+    public setItem(key, val): void {
+        this._storage.setItem(key, val);
+    }
+
+    public removeItem(key): void {
+        this._storage.removeItem(key);
+    }
+
+    public clear(): void {
+        this._storage.clear();
+    }
+
+    public key(val: number): Observable<string> {
+        return of(this._storage.key(val));
+    }
 }
