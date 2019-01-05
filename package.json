@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:plugin": "ng build async-storage-plugin"
+    "plugin:build": "ng build async-storage-plugin",
+    "plugin:test": "ng test async-storage-plugin"
   },
   "private": true,
   "dependencies": {
