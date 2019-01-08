@@ -21,9 +21,6 @@
     "paths": {
       "@ngxs-labs/async-storage-plugin": [
         "dist/@ngxs-labs/async-storage-plugin"
-      ],
-      "@ngxs-labs/async-storage-plugin/*": [
-        "dist/@ngxs-labs/async-storage-plugin/*"
       ]
     }
   }
