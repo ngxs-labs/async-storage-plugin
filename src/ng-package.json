@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../dist/async-storage-plugin",
+  "dest": "../dist/@ngxs-labs/async-storage-plugin",
   "lib": {
     "flatModuleFile": "ngxs-labs-async-storage-plugin",
     "entryFile": "public_api.ts",

@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "async-storage-plugin": [
-        "dist/async-storage-plugin"
+      "@ngxs-labs/async-storage-plugin": [
+        "dist/@ngxs-labs/async-storage-plugin"
       ],
-      "async-storage-plugin/*": [
-        "dist/async-storage-plugin/*"
+      "@ngxs-labs/async-storage-plugin/*": [
+        "dist/@ngxs-labs/async-storage-plugin/*"
       ]
     }
   }

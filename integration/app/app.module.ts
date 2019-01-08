@@ -11,7 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxsModule } from '@ngxs/store';
-import { NgxsAsyncStoragePluginModule, STORAGE_ENGINE } from 'dist/async-storage-plugin';
+import { NgxsAsyncStoragePluginModule, STORAGE_ENGINE } from '@ngxs-labs/async-storage-plugin';
 import { StorageService } from './services/storage.service';
 import { IonicStorageModule } from '@ionic/storage';
 
