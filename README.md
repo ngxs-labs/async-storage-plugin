@@ -17,7 +17,7 @@ import { NgxsAsyncStoragePluginModule } from '@ngxs-labs/async-storage-plugin';
 @NgModule({
     imports: [
         NgxsModule.forRoot(states),
-        NgxsAsyncStoragePluginModule.forRoot()
+        NgxsAsyncStoragePluginModule.forRoot(YOUR_CUSTOM_ENGINE)
     ]
 })
 export class AppModule {}
@@ -59,21 +59,66 @@ export class MyAsyncStorageEngine implements AsyncStorageEngine {
 @NgModule({
   imports: [
     NgxsModule.forRoot([]),
-    NgxsAsyncStoragePluginModule.forRoot()
-  ],
-  providers: [
-    {
-      provide: STORAGE_ENGINE,
-      useClass: MyAsyncStorageEngine
-    }
+    NgxsAsyncStoragePluginModule.forRoot(MyAsyncStorageEngine)
   ]
 })
 export class AppModule {}
 ```
 
-You can find an example implementation of the `AsyncStorageEngine` using the Ionic Storage in the integration project: see [StorageService](/integration/app/services/storage.service.ts).
-
 If your async storage returns a `Promise` you can wrap calls with `from(storage.length())` from `rxjs`.
+
+## Code Samples
+
+### Custom Ionic Storage Engine
+Here is an example implementation of the `AsyncStorageEngine` using the Ionic Storage.
+You can find the [StorageService](/integration/app/services/storage.service.ts) in the integration project.
+
+```typescript
+import { Injectable } from '@angular/core';
+import { Observable, from } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { AsyncStorageEngine } from '@ngxs-labs/async-storage-plugin';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class StorageService implements AsyncStorageEngine {
+  constructor(private storage: Storage) { }
+
+  length(): Observable<number> {
+    return from(this.storage.length());
+  }
+
+  getItem(key: any): Observable<any> {
+    return from(this.storage.get(key));
+  }
+
+  setItem(key: any, val: any): void {
+    this.storage.set(key, val);
+  }
+
+  removeItem(key: any): void {
+    this.storage.remove(key);
+  }
+
+  clear(): void {
+    this.storage.clear();
+  }
+
+  key(val: number): Observable<string> {
+    return from(this.storage.keys().then(keys => keys[val]));
+  }
+
+}
+
+@NgModule({
+  imports: [
+    NgxsModule.forRoot([]),
+    NgxsAsyncStoragePluginModule.forRoot(StorageService)
+  ]
+})
+export class AppModule {}
+```
 
 ## Options and Migrations
 This plugin provides the same options and migration settings as the [Storage Plugin](https://ngxs.gitbook.io/ngxs/plugins/storage). See [Options](https://ngxs.gitbook.io/ngxs/plugins/storage#options) and [Migrations](https://ngxs.gitbook.io/ngxs/plugins/storage#migrations) here.

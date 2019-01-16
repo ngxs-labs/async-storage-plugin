@@ -1,23 +1,11 @@
 import { InjectionToken } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-export const enum StorageOption {
-    LocalStorage,
-    SessionStorage
-}
-
 export interface NgxsStoragePluginOptions {
     /**
      * Key for the state slice to store in the storage engine.
      */
     key?: string | string[] | undefined;
-
-    /**
-     * Storage engine to use. Deaults to localStorage but can provide
-     *
-     * sessionStorage or custom implementation of the StorageEngine interface
-     */
-    storage?: StorageOption;
 
     /**
      * Migration strategies.

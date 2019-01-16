@@ -1,41 +1,32 @@
-import { NgModule, ModuleWithProviders, InjectionToken } from '@angular/core';
+import {
+  NgModule,
+  ModuleWithProviders,
+  InjectionToken,
+  TypeProvider
+} from '@angular/core';
 import { NGXS_PLUGINS } from '@ngxs/store';
 
 import { NgxsAsyncStoragePlugin } from './async-storage.plugin';
 import {
   NgxsStoragePluginOptions,
   NGXS_STORAGE_PLUGIN_OPTIONS,
-  StorageOption,
-  STORAGE_ENGINE,
-  StorageEngine
+  STORAGE_ENGINE
 } from './symbols';
 
 export function storageOptionsFactory(options: NgxsStoragePluginOptions) {
   return {
     key: '@@STATE',
-    storage: StorageOption.LocalStorage,
     serialize: JSON.stringify,
     deserialize: JSON.parse,
     ...options
   };
 }
 
-export function engineFactory(options: NgxsStoragePluginOptions): StorageEngine | null {
-  switch (options.storage) {
-    case StorageOption.LocalStorage:
-      return localStorage;
-    case StorageOption.SessionStorage:
-      return sessionStorage;
-  }
-
-  return null;
-}
-
 export const USER_OPTIONS = new InjectionToken('USER_OPTIONS');
 
 @NgModule()
 export class NgxsAsyncStoragePluginModule {
-  static forRoot(options?: NgxsStoragePluginOptions): ModuleWithProviders {
+  static forRoot(engine: TypeProvider, options?: NgxsStoragePluginOptions): ModuleWithProviders {
     return {
       ngModule: NgxsAsyncStoragePluginModule,
       providers: [
@@ -55,8 +46,7 @@ export class NgxsAsyncStoragePluginModule {
         },
         {
           provide: STORAGE_ENGINE,
-          useFactory: engineFactory,
-          deps: [NGXS_STORAGE_PLUGIN_OPTIONS]
+          useClass: engine,
         }
       ]
     };

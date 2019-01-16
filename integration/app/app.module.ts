@@ -23,13 +23,12 @@ import { IonicStorageModule } from '@ionic/storage';
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     NgxsModule.forRoot([CounterState]),
-    NgxsAsyncStoragePluginModule.forRoot()
+    NgxsAsyncStoragePluginModule.forRoot(StorageService)
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: STORAGE_ENGINE, useClass: StorageService }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
