@@ -1,3 +1,75 @@
 {
-  "enabled": false
+  "rangeStrategy": "bump",
+  "separateMajorMinor": false,
+  "prHourlyLimit": 2,
+  "timezone": "UTC",
+  "schedule": [
+    "after 9pm on saturday"
+  ],
+  "baseBranches": [
+    "master"
+  ],
+  "ignoreDeps": [
+    "@types/node"
+  ],
+  "packageFiles": [
+    "package.json"
+  ],
+  "major": {
+    "devDependencies": {
+      "enabled": false
+    }
+  },
+  "packageRules": [
+    {
+      "depTypeList": ["dependencies"],
+      "packagePatterns": [
+        "^@angular\/.*"
+      ],
+      "groupName": "@angular"
+    },
+    {
+      "depTypeList": ["devDependencies"],
+      "packagePatterns": [
+        "^@angular.*"
+      ],
+      "groupName": "@angular-dev"
+    },
+    {
+      "packageNames": [
+        "typescript"
+      ],
+      "updateTypes": "patch"
+    },
+    {
+      "packageNames": [
+        "^@ngxs\/.*"
+      ],
+      "groupName": "@ngxs"
+    },
+    {
+      "packageNames": [
+        "^karma.*"
+      ],
+      "groupName": "karma"
+    },
+    {
+      "packageNames": [
+        "^jasmine.*"
+      ],
+      "groupName": "jasmine"
+    },
+    {
+      "packageNames": [
+        "^@types\/.*"
+      ],
+      "groupName": "@types"
+    },
+    {
+      "packageNames": [
+        "^@ionic.*"
+      ],
+      "groupName": "@ionic"
+    }
+  ]
 }
