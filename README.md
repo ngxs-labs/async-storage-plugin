@@ -6,6 +6,9 @@
 
 > Supports custom storage engine with async access
 
+[![NPM](https://badge.fury.io/js/%40ngxs-labs%2Fasync-storage-plugin.svg)](https://www.npmjs.com/package/@ngxs-labs/async-storage-plugin)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ngxs-labs/async-storage-plugin/blob/master/LICENSE)
+
 ## 🔨 Usage
 Import the module into your root application module:
 
