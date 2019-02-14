@@ -88,9 +88,10 @@ You can find the [StorageService](/integration/app/services/storage.service.ts) 
 
 ```typescript
 import { Injectable, NgModule } from '@angular/core';
-import { Observable, from } from 'rxjs';
 import { Storage } from '@ionic/storage';
-import { AsyncStorageEngine } from '@ngxs-labs/async-storage-plugin';
+import { AsyncStorageEngine, NgxsAsyncStoragePluginModule } from '@ngxs-labs/async-storage-plugin';
+import { NgxsModule } from '@ngxs/store';
+import { from, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
