@@ -88,7 +88,7 @@ You can find the [StorageService](/integration/app/services/storage.service.ts) 
 
 ```typescript
 import { Injectable, NgModule } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule, Storage } from '@ionic/storage';
 import { AsyncStorageEngine, NgxsAsyncStoragePluginModule } from '@ngxs-labs/async-storage-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { from, Observable } from 'rxjs';
@@ -128,7 +128,8 @@ export class StorageService implements AsyncStorageEngine {
 @NgModule({
   imports: [
     NgxsModule.forRoot([]),
-    NgxsAsyncStoragePluginModule.forRoot(StorageService)
+    NgxsAsyncStoragePluginModule.forRoot(StorageService),
+    IonicStorageModule.forRoot()
   ]
 })
 export class AppModule {}
