@@ -87,7 +87,7 @@ Here is an example implementation of the `AsyncStorageEngine` using the Ionic St
 You can find the [StorageService](/integration/app/services/storage.service.ts) in the integration project.
 
 ```typescript
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { AsyncStorageEngine } from '@ngxs-labs/async-storage-plugin';
