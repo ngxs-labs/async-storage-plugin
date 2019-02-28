@@ -4,7 +4,9 @@
   "prHourlyLimit": 2,
   "timezone": "UTC",
   "schedule": [
-    "after 9pm on saturday"
+    "after 10pm every weekday",
+    "before 4am every weekday",
+    "every weekend"
   ],
   "baseBranches": [
     "master"
