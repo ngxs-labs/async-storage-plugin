@@ -44,7 +44,7 @@
         }
       }
     },
-    "integration": {
+    "app": {
       "root": "",
       "sourceRoot": "integration",
       "projectType": "application",
@@ -106,18 +106,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "integration:build"
+            "browserTarget": "app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "integration:build:production"
+              "browserTarget": "app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "integration:build"
+            "browserTarget": "app:build"
           }
         },
         "test": {
