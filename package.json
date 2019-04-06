@@ -51,7 +51,7 @@
     "@ionic/angular": "4.1.1",
     "@ionic/storage": "2.2.0",
     "@ngxs/store": "3.4.3",
-    "core-js": "2.6.5",
+    "core-js": "3.0.1",
     "rxjs": "6.4.0",
     "zone.js": "0.8.29"
   },
