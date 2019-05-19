@@ -52,7 +52,7 @@
     "@ionic/storage": "2.2.0",
     "@ngxs/store": "3.4.3",
     "core-js": "2.6.6",
-    "rxjs": "6.4.0",
+    "rxjs": "6.5.2",
     "zone.js": "0.9.1"
   },
   "devDependencies": {
