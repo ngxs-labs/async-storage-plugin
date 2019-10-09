@@ -72,6 +72,24 @@ export class NgxsAsyncStoragePlugin implements NgxsPlugin {
                         } else {
                             nextState = { ...previousState, ...val };
                         }
+                    } else {
+                        if (options.migrations) {
+                            val = Object.assign({}, state);
+                            options.migrations.forEach(strategy => {
+                                const versionMatch = strategy.version === getValue(val, strategy.versionKey || 'version');
+                                const keyMatch = (!strategy.key && isMaster) || strategy.key === key;
+                                if (versionMatch && keyMatch) {
+                                    val = strategy.migrate(val);
+                                    hasMigration = true;
+                                }
+                            });
+
+                            if (!isMaster) {
+                                nextState = setValue(previousState, key, val);
+                            } else {
+                                nextState = { ...previousState, ...val };
+                            }
+                        }
                     }
                     return nextState;
                 }, state),
