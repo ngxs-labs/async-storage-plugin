@@ -7,7 +7,7 @@ import { AsyncStorageEngine } from '@ngxs-labs/async-storage-plugin';
   providedIn: 'root'
 })
 export class StorageService implements AsyncStorageEngine {
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage) {}
 
   length(): Observable<number> {
     return from(this.storage.length());
@@ -32,5 +32,4 @@ export class StorageService implements AsyncStorageEngine {
   key(val: number): Observable<string> {
     return from(this.storage.keys().then(keys => keys[val]));
   }
-
 }

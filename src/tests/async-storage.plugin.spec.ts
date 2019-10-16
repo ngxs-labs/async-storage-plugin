@@ -3,7 +3,11 @@ import { TestBed } from '@angular/core/testing';
 import { Action, NgxsModule, State, Store, NgxsOnInit } from '@ngxs/store';
 
 import { StateContext } from '@ngxs/store';
-import { AsyncStorageEngine, NgxsAsyncStoragePluginModule, StorageEngine } from '../public_api';
+import {
+  AsyncStorageEngine,
+  NgxsAsyncStoragePluginModule,
+  StorageEngine
+} from '../public_api';
 import { Observable } from 'rxjs';
 
 describe('NgxsAsyncStoragePlugin', () => {
@@ -43,7 +47,7 @@ describe('NgxsAsyncStoragePlugin', () => {
     name: 'lazyLoaded',
     defaults: { count: 0 }
   })
-  class LazyLoadedStore { }
+  class LazyLoadedStore {}
 
   afterEach(() => {
     localStorage.removeItem('@@STATE');
@@ -112,7 +116,9 @@ describe('NgxsAsyncStoragePlugin', () => {
       .subscribe((state: StateModel) => {
         expect(state.count).toBe(105);
 
-        expect(CustomStorage.Storage['@@STATE']).toEqual({ counter: { count: 105 } });
+        expect(CustomStorage.Storage['@@STATE']).toEqual({
+          counter: { count: 105 }
+        });
       });
   });
 
@@ -166,7 +172,7 @@ describe('NgxsAsyncStoragePlugin', () => {
           .put(val, key);
       }
 
-      clear(): void { }
+      clear(): void {}
 
       key(val: number): Observable<string> {
         return undefined;
@@ -176,13 +182,15 @@ describe('NgxsAsyncStoragePlugin', () => {
         return undefined;
       }
 
-      removeItem(key): void { }
+      removeItem(key): void {}
     }
 
     const dbInit = window.indexedDB.open('initialTestStorage', 1);
     dbInit.onupgradeneeded = (event: any) => {
       db = event.target.result;
-      const objectStoreInit = db.createObjectStore(objectStore, { autoIncrement: true });
+      const objectStoreInit = db.createObjectStore(objectStore, {
+        autoIncrement: true
+      });
       objectStoreInit.transaction.oncomplete = () => {
         const stateInit = db
           .transaction(objectStore, 'readwrite')
@@ -210,7 +218,6 @@ describe('NgxsAsyncStoragePlugin', () => {
   });
 
   it('should save data to custom async storage using IndexedDB as storage engine', done => {
-
     let db;
     const objectStore = 'store';
 
@@ -266,7 +273,7 @@ describe('NgxsAsyncStoragePlugin', () => {
           .put(val, key);
       }
 
-      clear(): void { }
+      clear(): void {}
 
       key(val: number): Observable<string> {
         return undefined;
@@ -276,13 +283,15 @@ describe('NgxsAsyncStoragePlugin', () => {
         return undefined;
       }
 
-      removeItem(key): void { }
+      removeItem(key): void {}
     }
 
     const dbInit = window.indexedDB.open('saveDateTestStorage', 1);
     dbInit.onupgradeneeded = (event: any) => {
       db = event.target.result;
-      const objectStoreInit = db.createObjectStore(objectStore, { autoIncrement: true });
+      const objectStoreInit = db.createObjectStore(objectStore, {
+        autoIncrement: true
+      });
       objectStoreInit.transaction.oncomplete = () => {
         const stateInit = db
           .transaction(objectStore, 'readwrite')
@@ -360,7 +369,7 @@ describe('NgxsAsyncStoragePlugin', () => {
             .put(val, key);
         }
 
-        clear(): void { }
+        clear(): void {}
 
         key(val: number): Observable<string> {
           return undefined;
@@ -370,13 +379,15 @@ describe('NgxsAsyncStoragePlugin', () => {
           return undefined;
         }
 
-        removeItem(key): void { }
+        removeItem(key): void {}
       }
 
       const dbInit = window.indexedDB.open('nullValueTestStorage', 1);
       dbInit.onupgradeneeded = (event: any) => {
         db = event.target.result;
-        const objectStoreInit = db.createObjectStore(objectStore, { autoIncrement: true });
+        const objectStoreInit = db.createObjectStore(objectStore, {
+          autoIncrement: true
+        });
         objectStoreInit.transaction.oncomplete = () => {
           const stateInit = db
             .transaction(objectStore, 'readwrite')
@@ -453,7 +464,7 @@ describe('NgxsAsyncStoragePlugin', () => {
             .put(val, key);
         }
 
-        clear(): void { }
+        clear(): void {}
 
         key(val: number): Observable<string> {
           return undefined;
@@ -463,13 +474,15 @@ describe('NgxsAsyncStoragePlugin', () => {
           return undefined;
         }
 
-        removeItem(key): void { }
+        removeItem(key): void {}
       }
 
       const dbInit = window.indexedDB.open('undefinedValueTestStorage', 1);
       dbInit.onupgradeneeded = (event: any) => {
         db = event.target.result;
-        const objectStoreInit = db.createObjectStore(objectStore, { autoIncrement: true });
+        const objectStoreInit = db.createObjectStore(objectStore, {
+          autoIncrement: true
+        });
         objectStoreInit.transaction.oncomplete = () => {
           const stateInit = db
             .transaction(objectStore, 'readwrite')
@@ -546,7 +559,7 @@ describe('NgxsAsyncStoragePlugin', () => {
             .put(val, key);
         }
 
-        clear(): void { }
+        clear(): void {}
 
         key(val: number): Observable<string> {
           return undefined;
@@ -556,13 +569,18 @@ describe('NgxsAsyncStoragePlugin', () => {
           return undefined;
         }
 
-        removeItem(key): void { }
+        removeItem(key): void {}
       }
 
-      const dbInit = window.indexedDB.open('undefinedStringValueTestStorage', 1);
+      const dbInit = window.indexedDB.open(
+        'undefinedStringValueTestStorage',
+        1
+      );
       dbInit.onupgradeneeded = (event: any) => {
         db = event.target.result;
-        const objectStoreInit = db.createObjectStore(objectStore, { autoIncrement: true });
+        const objectStoreInit = db.createObjectStore(objectStore, {
+          autoIncrement: true
+        });
         objectStoreInit.transaction.oncomplete = () => {
           const stateInit = db
             .transaction(objectStore, 'readwrite')
@@ -591,7 +609,6 @@ describe('NgxsAsyncStoragePlugin', () => {
   });
 
   it('should migrate global custom async storage using IndexedDB as storage engine', done => {
-
     let db;
     const objectStore = 'store';
 
@@ -606,13 +623,14 @@ describe('NgxsAsyncStoragePlugin', () => {
         store
           .select(state => state.counter)
           .subscribe((state: StateModel) => {
-
             const request = db
               .transaction(objectStore, 'readonly')
               .objectStore(objectStore)
               .get('@@STATE');
             request.onsuccess = () => {
-              expect(request.result).toEqual({ counter: { counts: 100, version: 2 } });
+              expect(request.result).toEqual({
+                counter: { counts: 100, version: 2 }
+              });
               done();
             };
           });
@@ -640,7 +658,7 @@ describe('NgxsAsyncStoragePlugin', () => {
           .put(val, key);
       }
 
-      clear(): void { }
+      clear(): void {}
 
       key(val: number): Observable<string> {
         return undefined;
@@ -650,13 +668,15 @@ describe('NgxsAsyncStoragePlugin', () => {
         return undefined;
       }
 
-      removeItem(key): void { }
+      removeItem(key): void {}
     }
 
     const dbInit = window.indexedDB.open('migrateGlobalTestStorage', 1);
     dbInit.onupgradeneeded = (event: any) => {
       db = event.target.result;
-      const objectStoreInit = db.createObjectStore(objectStore, { autoIncrement: true });
+      const objectStoreInit = db.createObjectStore(objectStore, {
+        autoIncrement: true
+      });
       objectStoreInit.transaction.oncomplete = () => {
         const stateInit = db
           .transaction(objectStore, 'readwrite')
@@ -697,7 +717,6 @@ describe('NgxsAsyncStoragePlugin', () => {
   });
 
   it('should migrate single custom async storage using IndexedDB as storage engine', done => {
-
     let db;
     const objectStore = 'store';
 
@@ -712,7 +731,6 @@ describe('NgxsAsyncStoragePlugin', () => {
         store
           .select(state => state)
           .subscribe((state: StateModel) => {
-
             const request = db
               .transaction(objectStore, 'readonly')
               .objectStore(objectStore)
@@ -746,7 +764,7 @@ describe('NgxsAsyncStoragePlugin', () => {
           .put(val, key);
       }
 
-      clear(): void { }
+      clear(): void {}
 
       key(val: number): Observable<string> {
         return undefined;
@@ -756,13 +774,15 @@ describe('NgxsAsyncStoragePlugin', () => {
         return undefined;
       }
 
-      removeItem(key): void { }
+      removeItem(key): void {}
     }
 
     const dbInit = window.indexedDB.open('migrateSingleTestStorage', 1);
     dbInit.onupgradeneeded = (event: any) => {
       db = event.target.result;
-      const objectStoreInit = db.createObjectStore(objectStore, { autoIncrement: true });
+      const objectStoreInit = db.createObjectStore(objectStore, {
+        autoIncrement: true
+      });
       objectStoreInit.transaction.oncomplete = () => {
         const stateInit = db
           .transaction(objectStore, 'readwrite')
@@ -803,5 +823,4 @@ describe('NgxsAsyncStoragePlugin', () => {
       };
     };
   });
-
 });

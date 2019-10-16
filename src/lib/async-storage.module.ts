@@ -26,7 +26,10 @@ export const USER_OPTIONS = new InjectionToken('USER_OPTIONS');
 
 @NgModule()
 export class NgxsAsyncStoragePluginModule {
-  static forRoot(engine: TypeProvider, options?: NgxsStoragePluginOptions): ModuleWithProviders {
+  static forRoot(
+    engine: TypeProvider,
+    options?: NgxsStoragePluginOptions
+  ): ModuleWithProviders {
     return {
       ngModule: NgxsAsyncStoragePluginModule,
       providers: [
@@ -46,7 +49,7 @@ export class NgxsAsyncStoragePluginModule {
         },
         {
           provide: STORAGE_ENGINE,
-          useClass: engine,
+          useClass: engine
         }
       ]
     };

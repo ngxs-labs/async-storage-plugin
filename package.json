@@ -33,7 +33,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:plugin": "ng build async-storage-plugin",
-    "test:plugin": "ng test async-storage-plugin"
+    "build:prod": "ng build async-storage-plugin --prod && cp README.md dist/@ngxs-labs/async-storage-plugin/.",
+    "test:plugin": "ng test async-storage-plugin",
+    "format": "prettier --write \"**/*{.ts,.scss}\""
   },
   "private": true,
   "dependencies": {
@@ -77,6 +79,7 @@
     "karma-jasmine": "1.1.2",
     "karma-jasmine-html-reporter": "1.4.0",
     "ng-packagr": "4.7.1",
+    "prettier": "1.18.2",
     "protractor": "5.4.2",
     "ts-node": "7.0.1",
     "tsickle": "0.35.0",
