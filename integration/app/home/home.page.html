@@ -7,10 +7,15 @@
 </ion-header>
 
 <ion-content padding>
-    <ng-container *ngIf="counter$ | async as counter">
-        <h1>{{ counter }}</h1>
-    </ng-container>
-​
-    <ion-button (click)="increment()">Increment</ion-button>
-    <ion-button (click)="decrement()">Decrement</ion-button>
+  <ng-container *ngIf="counter$ | async as counter">
+    <h1>{{ counter }}</h1>
+  </ng-container>
+  ​
+  <ion-button (click)="increment()">Increment</ion-button>
+  <ion-button (click)="decrement()">Decrement</ion-button>
+
+
+  <ion-button (click)="resetState()">
+    Reset State
+  </ion-button>
 </ion-content>

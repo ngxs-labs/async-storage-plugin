@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { CounterState, Increment, Decrement } from '../store/counter.state';
 import { Observable } from 'rxjs';
+import { StateResetAll } from 'ngxs-reset-plugin';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomePage {
   @Select(CounterState)
   public counter$: Observable<number>;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) { }
 
   increment() {
     this.store.dispatch(new Increment());
@@ -20,5 +21,9 @@ export class HomePage {
 
   decrement() {
     this.store.dispatch(new Decrement());
+  }
+
+  resetState() {
+    this.store.dispatch(new StateResetAll());
   }
 }

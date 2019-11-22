@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { CounterState } from './store/counter.state';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,11 +12,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxsModule } from '@ngxs/store';
 import {
-  NgxsAsyncStoragePluginModule,
-  STORAGE_ENGINE
+  NgxsAsyncStoragePluginModule
 } from '@ngxs-labs/async-storage-plugin';
 import { StorageService } from './services/storage.service';
 import { IonicStorageModule } from '@ionic/storage';
+
+import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
+
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +30,9 @@ import { IonicStorageModule } from '@ionic/storage';
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     NgxsModule.forRoot([CounterState]),
-    NgxsAsyncStoragePluginModule.forRoot(StorageService)
+    NgxsResetPluginModule.forRoot(),
+    NgxsAsyncStoragePluginModule.forRoot(StorageService),
+    NgxsLoggerPluginModule.forRoot({ disabled: environment.production })
   ],
   providers: [
     StatusBar,
@@ -35,4 +41,4 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
