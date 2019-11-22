@@ -58,7 +58,7 @@
     "core-js": "2.6.6",
     "ngxs-reset-plugin": "1.2.0",
     "rxjs": "6.5.3",
-    "zone.js": "0.8.26"
+    "zone.js": "0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.13.9",
