@@ -13,7 +13,7 @@ export class HomePage {
   @Select(CounterState)
   public counter$: Observable<number>;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {}
 
   increment() {
     this.store.dispatch(new Increment());

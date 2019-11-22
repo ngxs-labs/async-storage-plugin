@@ -32,9 +32,9 @@ export class NgxsAsyncStoragePlugin implements NgxsPlugin {
     if (typeof this._engine.length === 'function') {
       this._asyncEngine = <AsyncStorageEngine>this._engine;
     } else {
-      this._asyncEngine = new AsyncStorageEngineProxy(<StorageEngine>(
-        this._engine
-      ));
+      this._asyncEngine = new AsyncStorageEngineProxy(
+        <StorageEngine>this._engine
+      );
     }
   }
 
