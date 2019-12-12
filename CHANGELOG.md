@@ -1,3 +1,14 @@
+## [0.0.3](https://github.com/ngxs-labs/async-storage-plugin/compare/v0.0.2...v0.0.3) (2019-12-12)
+
+
+### Features
+
+* **integration:** add migration example using key ([727b02f](https://github.com/ngxs-labs/async-storage-plugin/commit/727b02f))
+* **migration:** use default state value for master key otherwise get value for key ([7d4bff3](https://github.com/ngxs-labs/async-storage-plugin/commit/7d4bff3))
+* **plugins:** add ngxs-reset-plugin and logger plugin ([699417e](https://github.com/ngxs-labs/async-storage-plugin/commit/699417e))
+
+
+
 ## 0.0.2 (2019-10-16)
 
 
