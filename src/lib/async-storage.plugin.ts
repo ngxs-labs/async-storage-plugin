@@ -90,7 +90,11 @@ export class NgxsAsyncStoragePlugin implements NgxsPlugin {
             }
           } else {
             if (options.migrations) {
-              val = Object.assign({}, state);
+              if (isMaster) {
+                val = state;
+              } else {
+                val = getValue(state, key);
+              }
               options.migrations.forEach(strategy => {
                 const versionMatch =
                   strategy.version ===
@@ -102,7 +106,6 @@ export class NgxsAsyncStoragePlugin implements NgxsPlugin {
                   hasMigration = true;
                 }
               });
-
               if (!isMaster) {
                 nextState = setValue(previousState, key, val);
               } else {
