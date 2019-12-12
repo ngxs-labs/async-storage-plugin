@@ -5,17 +5,27 @@ export class Increment {
 export class Decrement {
   public static readonly type = '[Counter] Decrement';
 }
-@State<number>({
+
+export interface CounterStateModel {
+  count: number;
+  version: number;
+}
+
+@State<CounterStateModel>({
   name: 'counter',
-  defaults: 0
+  defaults: {
+    count: 0,
+    version: 0
+  }
 })
 export class CounterState {
   @Action(Increment)
-  public increment({ setState, getState }: StateContext<number>) {
-    setState(getState() + 1);
+  public increment({ patchState, getState }: StateContext<CounterStateModel>) {
+    patchState({ count: getState().count + 1 });
   }
+
   @Action(Decrement)
-  public decrement({ setState, getState }: StateContext<number>) {
-    setState(getState() - 1);
+  public decrement({ patchState, getState }: StateContext<CounterStateModel>) {
+    patchState({ count: getState().count - 1 });
   }
 }

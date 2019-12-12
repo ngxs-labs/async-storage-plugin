@@ -29,7 +29,22 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
     IonicStorageModule.forRoot(),
     NgxsModule.forRoot([CounterState]),
     NgxsResetPluginModule.forRoot(),
-    NgxsAsyncStoragePluginModule.forRoot(StorageService),
+    NgxsAsyncStoragePluginModule.forRoot(StorageService, {
+      key: ['counter'],
+      migrations: [
+        {
+          version: 0,
+          key: 'counter',
+          migrate(state) {
+            state = {
+              count: 5,
+              version: 1
+            };
+            return state;
+          }
+        }
+      ]
+    }),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production })
   ],
   providers: [

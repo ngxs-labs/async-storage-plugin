@@ -8,12 +8,11 @@
 
 <ion-content class="ion-padding">
   <ng-container *ngIf="counter$ | async as counter">
-    <h1>{{ counter }}</h1>
+    <h1>{{ counter.count }}</h1>
   </ng-container>
   ​
   <ion-button (click)="increment()">Increment</ion-button>
   <ion-button (click)="decrement()">Decrement</ion-button>
-
 
   <ion-button (click)="resetState()">
     Reset State
