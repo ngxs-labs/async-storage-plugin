@@ -1,11 +1,12 @@
 import { InjectionToken } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { StorageKey } from './internals';
 
 export interface NgxsStoragePluginOptions {
   /**
    * Key for the state slice to store in the storage engine.
    */
-  key?: string | string[] | undefined;
+  key?: undefined | StorageKey;
 
   /**
    * Migration strategies.

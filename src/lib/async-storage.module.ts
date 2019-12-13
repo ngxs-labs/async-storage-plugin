@@ -12,15 +12,7 @@ import {
   NGXS_STORAGE_PLUGIN_OPTIONS,
   STORAGE_ENGINE
 } from './symbols';
-
-export function storageOptionsFactory(options: NgxsStoragePluginOptions) {
-  return {
-    key: '@@STATE',
-    serialize: JSON.stringify,
-    deserialize: JSON.parse,
-    ...options
-  };
-}
+import { storageOptionsFactory } from './internals';
 
 export const USER_OPTIONS = new InjectionToken('USER_OPTIONS');
 
