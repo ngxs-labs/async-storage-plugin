@@ -1,3 +1,12 @@
+## [0.1.1](https://github.com/ngxs-labs/async-storage-plugin/compare/v0.1.0...v0.1.1) (2019-12-13)
+
+
+### Bug Fixes
+
+* **migration:** copy default state without readonly ([4994c83](https://github.com/ngxs-labs/async-storage-plugin/commit/4994c83))
+
+
+
 # [0.1.0](https://github.com/ngxs-labs/async-storage-plugin/compare/v0.0.3...v0.1.0) (2019-12-13)
 
 
