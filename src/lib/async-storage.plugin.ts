@@ -91,7 +91,7 @@ export class NgxsAsyncStoragePlugin implements NgxsPlugin {
           } else {
             if (options.migrations) {
               if (isMaster) {
-                val = state;
+                val = Object.assign({}, state);
               } else {
                 val = getValue(state, key);
               }
