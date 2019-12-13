@@ -1,3 +1,18 @@
+# [0.1.0](https://github.com/ngxs-labs/async-storage-plugin/compare/v0.0.3...v0.1.0) (2019-12-13)
+
+
+### Bug Fixes
+
+* **integration:** migration example ([f786b9e](https://github.com/ngxs-labs/async-storage-plugin/commit/f786b9e))
+
+
+### Features
+
+* **migration:** export migration type ([#132](https://github.com/ngxs-labs/async-storage-plugin/issues/132)) ([7dd0eb4](https://github.com/ngxs-labs/async-storage-plugin/commit/7dd0eb4))
+* **storage-options:** use state classes as key ([cf0cfa1](https://github.com/ngxs-labs/async-storage-plugin/commit/cf0cfa1))
+
+
+
 ## [0.0.3](https://github.com/ngxs-labs/async-storage-plugin/compare/v0.0.2...v0.0.3) (2019-12-12)
 
 
