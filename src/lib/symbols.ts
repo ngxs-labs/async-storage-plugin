@@ -2,6 +2,28 @@ import { InjectionToken } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { StorageKey } from './internals';
 
+export interface NgxsStoragePluginMigration {
+  /**
+   * Version to key off.
+   */
+  version: number | string;
+
+  /**
+   * Method to migrate the previous state.
+   */
+  migrate: (state: any) => any;
+
+  /**
+   * Key to migrate.
+   */
+  key?: string;
+
+  /**
+   * Key for the version. Defaults to 'version'.
+   */
+  versionKey?: string;
+}
+
 export interface NgxsStoragePluginOptions {
   /**
    * Key for the state slice to store in the storage engine.
@@ -11,27 +33,7 @@ export interface NgxsStoragePluginOptions {
   /**
    * Migration strategies.
    */
-  migrations?: {
-    /**
-     * Version to key off.
-     */
-    version: number | string;
-
-    /**
-     * Method to migrate the previous state.
-     */
-    migrate: (state: any) => any;
-
-    /**
-     * Key to migrate.
-     */
-    key?: string;
-
-    /**
-     * Key for the version. Defaults to 'version'.
-     */
-    versionKey?: string;
-  }[];
+  migrations?: NgxsStoragePluginMigration[];
 
   /**
    * Serailizer for the object before its pushed into the engine.
