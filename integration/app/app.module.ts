@@ -19,6 +19,14 @@ import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
+export function migration(state) {
+  state = {
+    count: 5,
+    version: 1
+  };
+  return state;
+}
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -27,7 +35,9 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
-    NgxsModule.forRoot([CounterState]),
+    NgxsModule.forRoot([CounterState], {
+      developmentMode: !environment.production
+    }),
     NgxsResetPluginModule.forRoot(),
     NgxsAsyncStoragePluginModule.forRoot(StorageService, {
       key: ['counter'],
@@ -35,13 +45,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
         {
           version: 0,
           key: 'counter',
-          migrate(state) {
-            state = {
-              count: 5,
-              version: 1
-            };
-            return state;
-          }
+          migrate: migration
         }
       ]
     }),
