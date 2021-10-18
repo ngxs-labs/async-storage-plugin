@@ -80,7 +80,7 @@
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage-istanbul-reporter": "2.0.5",
     "karma-jasmine": "1.1.2",
-    "karma-jasmine-html-reporter": "1.4.0",
+    "karma-jasmine-html-reporter": "1.7.0",
     "ng-packagr": "5.7.1",
     "prettier": "1.19.1",
     "protractor": "5.4.2",
