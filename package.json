@@ -56,7 +56,7 @@
     "@ngxs/logger-plugin": "3.6.0",
     "@ngxs/store": "3.6.0",
     "core-js": "2.6.6",
-    "ngxs-reset-plugin": "1.2.0",
+    "ngxs-reset-plugin": "1.4.1",
     "rxjs": "6.5.3",
     "zone.js": "0.9.1"
   },
