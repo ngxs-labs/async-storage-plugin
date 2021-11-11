@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { Storage } from '@ionic/storage';
-import { AsyncStorageEngine } from '@ngxs-labs/async-storage-plugin';
+import { AsyncStorageEngine } from '../../../src/lib/symbols';
 
 @Injectable({
   providedIn: 'root'

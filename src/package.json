@@ -1,6 +1,6 @@
 {
   "name": "@ngxs-labs/async-storage-plugin",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ngxs-labs/async-storage-plugin.git"
@@ -11,8 +11,8 @@
     "url": "https://github.com/ngxs-labs/async-storage-plugin/issues"
   },
   "peerDependencies": {
-    "@angular/core": ">=6.1.0 <10.0.0",
-    "@ngxs/store": ">=3.6.0",
+    "@angular/core": ">=6.1.0 <14.0.0",
+    "@ngxs/store": ">=3.7.2",
     "rxjs": ">=6.0.0"
   }
 }

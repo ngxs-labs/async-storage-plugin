@@ -3,9 +3,6 @@
   "dest": "../dist/@ngxs-labs/async-storage-plugin",
   "lib": {
     "flatModuleFile": "ngxs-labs-async-storage-plugin",
-    "entryFile": "public_api.ts",
-    "umdModuleIds": {
-      "@ngxs/store": "ngxs-store"
-    }
+    "entryFile": "public_api.ts"
   }
 }

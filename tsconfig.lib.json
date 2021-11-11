@@ -2,8 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "out-tsc/lib",
-    "target": "es2015",
-    "module": "es2015",
+    "declarationMap": true,
+    "target": "es6",
+    "module": "ES2020",
     "declaration": true,
     "inlineSources": true,
     "importHelpers": true
