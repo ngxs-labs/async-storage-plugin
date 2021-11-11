@@ -19,7 +19,8 @@
           "configurations": {
             "production": {
               "project": "src/ng-package.prod.json"
-            }
+            ,              "tsConfig": "tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -54,6 +55,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/integration",
             "index": "integration/index.html",
             "main": "integration/main.ts",
@@ -98,6 +100,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }

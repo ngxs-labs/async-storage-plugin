@@ -21,7 +21,7 @@ export class NgxsAsyncStoragePluginModule {
   static forRoot(
     engine: TypeProvider,
     options?: NgxsStoragePluginOptions
-  ): ModuleWithProviders {
+  ): ModuleWithProviders<NgxsAsyncStoragePluginModule> {
     return {
       ngModule: NgxsAsyncStoragePluginModule,
       providers: [
