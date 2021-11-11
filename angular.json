@@ -11,7 +11,7 @@
       "prefix": "async-storage-plugin",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "tsconfig.lib.json",
             "project": "src/ng-package.json"
@@ -70,10 +70,12 @@
             ],
             "styles": [
               {
-                "input": "integration/theme/variables.scss"
+                "input": "integration/theme/variables.scss",
+                "inject": true
               },
               {
-                "input": "integration/global.scss"
+                "input": "integration/global.scss",
+                "inject": true
               }
             ],
             "scripts": []
@@ -89,7 +91,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
