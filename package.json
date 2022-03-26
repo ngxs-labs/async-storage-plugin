@@ -57,7 +57,7 @@
     "@ngxs/store": "3.6.0",
     "core-js": "2.6.6",
     "ngxs-reset-plugin": "1.2.0",
-    "rxjs": "6.5.3",
+    "rxjs": "7.5.5",
     "zone.js": "0.9.1"
   },
   "devDependencies": {
